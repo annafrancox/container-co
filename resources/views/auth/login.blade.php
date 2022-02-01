@@ -14,16 +14,17 @@
           crossorigin="anonymous"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/fe02716ff2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <img src="{{ asset('img/logo.png') }}" class="companylogo" alt="Logo da marca CONTAINER.CO">
+        <img src="{{ asset('img/logo.png') }}" class="companylogo" alt="">
     </div>
     <!-- /.login-logo -->
 

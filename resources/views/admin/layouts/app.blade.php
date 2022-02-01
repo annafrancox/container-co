@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Título e ícone da aba -->
-    <title>Reportei - Tech Challenge</title>
+    <title>CONTAINER.CO</title>
     <link rel="icon" type="imagem/png" href="/img/logoR.png" />
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">

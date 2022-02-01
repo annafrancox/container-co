@@ -1,3 +1,4 @@
 <footer class="main-footer">
-    Desenvolvido com carinho por <a href="https://github.com/annafrancox">annafrancox</a> ♡
+    <strong>Copyright &copy; 2021 <a href="http://adminlte.io">Code Jr.</a></strong>
+    All rights reserved.
 </footer>

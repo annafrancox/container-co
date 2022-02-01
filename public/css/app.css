@@ -11418,7 +11418,8 @@ body:not(.layout-fixed) .main-sidebar {
   position: absolute;
   top: 0;
 }
-body:not(.layout-fixed) .main-sidebar .sidebar {
+body:not(.layout-fixed) .main-sidebar .sidebar
+{
   overflow-y: auto;
 }
 

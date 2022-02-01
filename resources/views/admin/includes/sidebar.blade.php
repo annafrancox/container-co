@@ -1,7 +1,7 @@
 <aside class="main-sidebar elevation-4 sidebar-dark-primary"  style="overflow-x: hidden;">
     <span>
         <a href="/" class="brand-link">
-            <img src="{{ asset('img/logo.png') }}" alt="" class="brand-image" >
+            <img src="{{ asset('img/logoS.png') }}" alt="" class="brand-image" >
         </a>
     </span>
 
@@ -25,15 +25,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview ">
-                    <a href="/contentbox" class="nav-link {{ Route::is('contentbox.index') ? 'active' : '' }}">
-                        <i class="pl-1 pr-2 fas fa-boxes"></i>
-                        <p>
-                            Boxes Zone
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item has-treeview ">
-                    <a href="/users" class="nav-link {{ Route::is('user.index') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ Route::is('#') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Usuários

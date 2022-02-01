@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.includes.layouts.app')
 
 @section('content')
     <div class="container-fluid">
