@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContainerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,8 @@ Route::middleware(['auth'])->group(function () {
     // Rotas logadas no sistema
     Route::prefix('admin')->middleware(['auth'])->group(function () {
         //users
-        Route::resource('/users', UserController::class)->names('users');
-        Route::resource('/categories', CategoryController::class)->names('categories');
+        Route::resource('/usuarios', UserController::class)->names('users')->parameters(['usuarios' => 'user']);
+        Route::resource('/categorias', CategoryController::class)->names('categories')->except('show')->parameters(['categorias' => 'categoria']);
+        Route::resource('/containers', ContainerController::class)->names('containers')->except('show');
     });
 });

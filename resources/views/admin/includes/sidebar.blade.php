@@ -51,8 +51,16 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item has-treeview">
                     <a href="{{ route('categories.index') }}" class="nav-link {{  Route::is('categories.*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-list"></i>
+                        <i class="nav-icon fas fa-filter"></i>
                         <p>Categorias</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('containers.index') }}" class="nav-link {{  Route::is('containers.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-box"></i>
+                        <p>Containers</p>
                     </a>
                 </li>
             </ul>
