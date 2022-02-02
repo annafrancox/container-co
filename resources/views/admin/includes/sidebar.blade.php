@@ -64,6 +64,14 @@
                     </a>
                 </li>
             </ul>
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('products.index') }}" class="nav-link {{  Route::is('products.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-utensils"></i>
+                        <p>Produtos</p>
+                    </a>
+                </li>
+            </ul>
         </nav>
         <!-- Fim Sidebar Menu -->
 

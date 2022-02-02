@@ -72,7 +72,9 @@
     <script src="{{ asset('js/components/previewImage.js') }}"></script>
     <script>
         $(function() {
-            $('.select2').select2();
+            $('.select2').select2({
+                'placeholder': 'Selecione'
+            });
         });
 
         $('select[value]').each(function () {

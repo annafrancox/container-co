@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContainerController;
 
@@ -30,7 +31,8 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->middleware(['auth'])->group(function () {
         //users
         Route::resource('/usuarios', UserController::class)->names('users')->parameters(['usuarios' => 'user']);
-        Route::resource('/categorias', CategoryController::class)->names('categories')->except('show')->parameters(['categorias' => 'categoria']);
+        Route::resource('/categorias', CategoryController::class)->names('categories')->except('show')->parameters(['categorias' => 'category']);
         Route::resource('/containers', ContainerController::class)->names('containers')->except('show');
+        Route::resource('/produtos', ProductController::class)->names('products')->parameters(['produtos' => 'product']);
     });
 });
