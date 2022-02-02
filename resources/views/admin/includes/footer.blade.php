@@ -1,4 +1,7 @@
+<!-- Footer -->
 <footer class="main-footer">
-    <strong>Copyright &copy; 2021 <a href="http://adminlte.io">Code Jr.</a></strong>
-    All rights reserved.
+    <div class="float-right d-none d-sm-inline"></div>
+    <strong>Copyright &copy; {{ date('Y') }} <a href="" target="_blank">Empresa Ex</a>.</strong> Todos direitos
+    reservados.
 </footer>
+<!-- Fim Footer -->

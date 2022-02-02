@@ -1,37 +1,38 @@
-@extends('admin.layouts.app')
-
+@extends('admin.layouts.sistema')
 @section('content')
-    @component('admin.components.table')
-        @slot('title', 'Listagem de usuários')
-        @slot('create', route('user.create'))
-        @slot('head')
-            <td>Nome</td>
-            <td>Email</td>
-            <td>Nível de acesso</td>
-            <td></td>
-        @endslot
-        @slot('body')
-            @foreach($users as $user)
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        @if ($user->access== 'administrador')
-                            <td>Administrador</td>
-                        @else
-                            <td>Usuário comum</td>
-                        @endif
-                        <td>
-                            <div class="text-center btn-list">
-                                <a href="{{ route( 'user.edit', $user->id ) }}" class="btn btn-outline-primary" style="width: 40px"><i class="fas fa-pen"></i></a>
-                                <form class="form-delete pl-2" action="{{ route('user.destroy', $user->id) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-            @endforeach
-        @endslot
-    @endcomponent
+
+@component('admin.components.table')
+    @slot('create', route('users.create'))
+    @slot('title', 'Usuários')
+    @slot('head')
+        <th width="50%">Nome</th>
+        <th width="40%">E-mail</th>
+        <th width="10%"></th>
+    @endslot
+    @slot('body')
+        @foreach ($users as $user)
+            <tr class="deletable">
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td class="options">
+                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+
+                    <form class="form-delete" action="{{ route('users.destroy', $user->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    @endslot
+@endcomponent
+
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/components/dataTable.js') }}"></script>
+    <script src="{{ asset('js/components/sweetAlert.js') }}"></script>
+@endpush

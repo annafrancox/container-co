@@ -1,5 +1,143 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+
 // Variables
 @import 'variables';
 
 // Bootstrap
-@import '~admin-lte/build/scss/adminlte';
+@import '~bootstrap/scss/bootstrap';
+
+// Font Awesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+// DataTable
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.min.css";
+
+// AdminLTE
+@import "~admin-lte/build/scss/AdminLTE.scss";
+
+//Select2
+@import "~select2/dist/css/select2.css";
+
+//Chart.js
+@import "~chart.js/dist/Chart.css";
+
+//Summernote
+@import "~summernote/dist/summernote.min.css";
+
+//OverlayScrollbars
+@import "~overlayscrollbars/css/OverlayScrollbars.min.css";
+
+
+// Additional general css
+
+html,
+body {
+    height: 100% !important;
+    margin: 0 !important;
+}
+
+#wrapper {
+    min-height: 100% !important;
+}
+
+.select2 {
+    width: 100% !important;
+}
+.mutiple {
+    width: 10px !important;
+}
+
+.required::after {
+    content: "*";
+    color: red;
+}
+
+.options {
+    white-space: nowrap;
+}
+
+.options > * {
+    display: inline-block;
+}
+.btn-edit {
+    margin-bottom: 5px;
+}
+.row-hidden {
+    display: none;
+}
+.select2-selection {
+    overflow: hidden;
+}
+.select2-selection__rendered {
+    white-space: normal;
+    word-break: break-all;
+}
+.select-year {
+    width: 100px;
+}
+
+@media (max-width: 500px) {
+    .listagem {
+        display: none;
+    }
+}
+
+.display-none{
+    display: none;
+}
+
+.img-logo{
+    width: 150px;
+    margin-left: 2vw;
+}
+
+@media(max-width:510px){
+    .show-iframe{
+        display: none;
+    }
+}
+@media(min-width:511px){
+    .show-warning{
+        display: none;
+    }
+}
+
+
+/* Inicio Css Overlay Profile Image */
+.box-profile {
+    position: relative;
+    width: 100%;
+    max-width: 150px;
+    margin: auto;
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+}
+
+.box-profile:hover .overlay {
+    opacity: 1;
+}
+.box-profile:focus .overlay {
+    opacity: 1;
+}
+/* Fim Css Overlay Profile Image */

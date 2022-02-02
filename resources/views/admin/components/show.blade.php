@@ -1,11 +1,13 @@
-<div class="col-12">
+<div class="col-md-10 offset-md-1 col-12">
     <div class="card card-outline card-primary">
         <div class="card-header">
-            <h3 class="card-title title-form titlebox">{{ $title ?? null }} </h3>
+            <h3 class="card-title title-form">{{ $title ?? null }} </h3>
         </div>
-        <div class="row row-cols-1 row-cols-md-2 g-4 pt-3">
-            {{ $body ?? null }}
-            {{ $footer ?? null }}
+        <div class="card-body">
+            {{ $content ?? null }}
+        </div>
+        <div class="card-footer">
+            {{ $back ?? null }}
         </div>
     </div>
 </div>

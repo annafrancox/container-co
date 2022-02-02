@@ -3,7 +3,7 @@
         @if (isset($create) || isset($title))
             <div class="card-header card-outline card-primary">
                 <h3 class="float-left m-0 table-title">{{ $title ?? null }}</h3>
-                @if (isset($create) && !Route::is('user.index'))
+                @if (isset($create))
                     <div class="float-right mr-2">
                         <div class="input-group input-group-sm">
                             <a href="{{ $create }}">
@@ -17,19 +17,17 @@
             </div>
         @endif
 
-        <div class="card-body table-responsive ">
-            <table  class="table table-hover dataTable table-striped">
-                <thead>
-                <tr>
-                    {{ $head ?? null }}
-                </tr>
+        <div class="card-body table-responsive">
+            <table  id="example" class="w-100 table table-hover dataTable table-striped">
+                <thead class="">
+                    <tr>
+                        {{ $head ?? null }}
+                    </tr>
                 </thead>
                 <tbody>
-                {{ $body ?? null }}
+                    {{ $body ?? null }}
                 </tbody>
             </table>
-            <div style="margin-top: 40px;"></div>
-            {{ $footer ?? null }}
         </div>
     </div>
 @else
@@ -43,4 +41,3 @@
         </a>
     </div>
 @endif
-

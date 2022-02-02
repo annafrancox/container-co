@@ -9,10 +9,31 @@ window._ = require('lodash');
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
+    window.moment = require('moment');
+    window.Swal = require('sweetalert2');
+    require('admin-lte');
+    require('bootstrap');
+    require('jquery-validation');
+    require('jquery-validation/dist/additional-methods.js');
+    require('jquery-mask-plugin/dist/jquery.mask.min.js');
+    require('datatables.net-bs4');
+    require('select2');
+    require('chart.js');
+    require('summernote');
+    require('overlayscrollbars');
 
     require('bootstrap');
-} catch (e) {
-}
+} catch (e) {}
+
+/**
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
+ */
+
+window.axios = require('axios');
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -28,5 +49,5 @@ try {
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
+//     forceTLS: true
 // });
