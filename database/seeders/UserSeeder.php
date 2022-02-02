@@ -19,27 +19,30 @@ class UserSeeder extends Seeder
         $user = User::updateOrCreate([
             'name' => 'Admin',
             'email' => 'admin@admin.com.br',
-        ],[
+        ], [
             'name' => 'Admin',
             'email' => 'admin@admin.com.br',
+            'admin' => 1,
+            'cpf' => '000.000.000-00',
+            'identity' => '00000-0',
+            'phone' => '(00) 0 0000-0000',
             'dateBirth' => now(),
             'password' => bcrypt('123456'),
         ]);
-        $role = Role::where('name', 'admin')->first();
-        $user->role()->associate($role);
         $user->save();
 
         $user2 = User::updateOrCreate([
             'name' => 'user',
             'email' => 'user@user.com.br',
-        ],[
+        ], [
             'name' => 'user',
             'email' => 'user@user.com.br',
             'dateBirth' => now(),
+            'cpf' => '000.000.000-01',
+            'identity' => '00000-1',
+            'phone' => '(00) 0 0000-0001',
             'password' => bcrypt('123456'),
         ]);
-        $role = Role::getLowestRole();
-        $user2->role()->associate($role);
         $user2->save();
     }
 }

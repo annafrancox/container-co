@@ -29,7 +29,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.users.index',compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -40,9 +40,8 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        $user->setDefaultImg(); 
-        $roles = Role::all();
-        return view('admin.users.create',compact('user', 'roles'));
+        $user->setDefaultImg();
+        return view('admin.users.create', compact('user'));
     }
 
     /**
@@ -55,9 +54,12 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $data = User::verifyUpdatePassword($data);
-        User::create($data);
+        if (array_key_exists('admin', $data) && !auth()->user->admin) {
+            unset($data['admin']);
+        }
+        $user = User::create($data);
         $data = User::saveImg($data, 'profile_path', 'public/img/profile/', $user->profile_path);
-        return redirect()->route('users.index')->with('success',true);
+        return redirect()->route('users.index')->with('success', true);
     }
 
     /**
@@ -68,8 +70,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $roles = Role::all();
-        return view('admin.users.show', compact('user', 'roles'));
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -80,8 +81,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $roles = Role::all();
-        return view('admin.users.edit',compact('user', 'roles'));
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -95,13 +95,15 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $data = User::verifyUpdatePassword($data);
+        if (array_key_exists('admin', $data) && !auth()->user->admin) {
+            unset($data['admin']);
+        }
         $data = User::saveImg($data, 'profile_path', 'public/img/profile/', $user->profile_path);
         $user->update($data);
-        if(Gate::allows('user-admin')){
-            $user->role()->associate($data['role_id']);
+        if (Gate::allows('user-admin')) {
             $user->save();
         }
-        return redirect()->back()->with('success',true);
+        return redirect()->back()->with('success', true);
     }
 
     /**
@@ -112,11 +114,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if($user->profile_path != 'storage/img/profile/profile_default.png'){
+        if ($user->profile_path != 'storage/img/profile/profile_default.png') {
             User::deleteImg($user->profile_path, 'public/img/profile/');
         }
 
         $user->delete();
-        return redirect()->route('users.index')->with('success',true);
+        return redirect()->route('users.index')->with('success', true);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BoxBannerRequest extends FormRequest
+class CategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,7 @@ class BoxBannerRequest extends FormRequest
     public function rules()
     {
         return [
-            'content_id' => 'required|exists:contents,id',
-            'box_id' => 'required|exists:boxes,id',
-        ];
-    }
-
-    public function attributes(){
-        return [
-            'content_id' => "conteúdo",
-            'box_id' => 'box',
+            'name' => 'required|string|min:3',
         ];
     }
 }

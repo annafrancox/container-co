@@ -20,7 +20,10 @@ class CreateUsersTable extends Migration
             $table->date('dateBirth');
             $table->string('profile_path')->default("storage/img/profile/profile_default.png");
             $table->string('password');
-            $table->unsignedBigInteger('role_id')->nullable();
+            $table->boolean('admin')->default(0);
+            $table->string('cpf')->unique();
+            $table->string('phone');
+            $table->string('identity')->unique();
             $table->rememberToken();
             $table->timestamps();
         });

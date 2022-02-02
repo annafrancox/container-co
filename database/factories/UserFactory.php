@@ -30,6 +30,9 @@ class UserFactory extends Factory
             'dateBirth' => $faker->dateTimeBetween('1990-01-01', '2000-12-31'),
             'password' => bcrypt('123456'),
             'remember_token' => Str::random(10),
+            'cpf' => $faker->cpf,
+            'phone' => $faker->phone,
+            'identity' => rand(10000, 99999) . '-' . rand(0, 9),
         ];
     }
 }

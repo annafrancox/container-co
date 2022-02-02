@@ -10,7 +10,7 @@
         <label for="name" class="required">Nome </label>
         <input type="text" name="name" id="name" class="form-control" required autofocus value="{{ old('name',$user->name) }}">
     </div>
-    <div class="form-group col-sm-6 col-12">
+    <div class="form-group col-12">
         <label for="email" class="required">E-mail </label>
         <input type="email" name="email" id="email" class="form-control" required value="{{ old('email',$user->email) }}">
     </div>
@@ -20,14 +20,26 @@
     </div>
     @can('create', App\Models\User::class)
         <div class="form-group col-sm-12">
-            <label for="role_id" class="required">Cargo </label>
-            <select class="form-control select2" name="role_id" id="role_id" required value="{{ old('role_id', $user->role_id) }}">
-                @foreach($roles as $role)
-                    <option value="{{ $role->id }}">{{ $role->name }}</option>
-                @endforeach
+            <label for="admin" class="required">Cargo </label>
+            <select class="form-control select2" name="admin" id="admin" required value="{{ old('admin', $user->admin) }}">
+                <option></option>
+                <option value="0">Funcionário</option>
+                <option value="1">Gerente</option>
             </select>
         </div>
     @endcan
+    <div class="form-group col-sm-6 col-12">
+        <label for="cpf" class="required">CPF </label>
+        <input type="text" name="cpf" id="cpf" class="form-control" required value="{{ old('cpf',$user->cpf) }}">
+    </div>
+    <div class="form-group col-sm-6 col-12">
+        <label for="phone" class="required">Telefone </label>
+        <input type="text" name="phone" id="phone" class="form-control" required value="{{ old('phone',$user->phone) }}">
+    </div>
+    <div class="form-group col-sm-6 col-12">
+        <label for="identity" class="required">Identificação</label>
+        <input type="text" name="identity" id="identity" class="form-control" required value="{{ old('identity',$user->identity) }}">
+    </div>
     @if (!Route::is('users.show'))
         <div class="form-group col-sm-12">
             <hr>
@@ -70,6 +82,19 @@
         $("#profile").change(function() {
             filePreview(this, '#profilePreview');
         });
+
+        $('#cpf').mask('000.000.000-00');
+        $('#identity').mask('00000-0');
+        var behavior = function (val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 0 0000-0000' : '(00) 0000-00009';
+        },
+            options = {
+                onKeyPress: function (val, e, field, options) {
+                    field.mask(behavior.apply({}, arguments), options);
+                }
+            };
+
+	    $('#phone').mask(behavior, options);
     </script>
     <script>
         

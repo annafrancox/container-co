@@ -52,12 +52,12 @@
         </script>
         <script src="{{ asset('js/components/error.js')  }}"></script>
         <script src="{{ asset('js/components/responsiveSidebar.js')  }}"></script>
-        <script src="{{ asset('js/components/ajaxWatch.js')  }}"></script>
+        {{-- <script src="{{ asset('js/components/ajaxWatch.js')  }}"></script
         <script>
             $(document).ajaxWatch('.ajaxWatch', true, function(){
                 $(".ajaxWatch").closest('.deletable').slice(0).remove();
             });
-        </script>
+        </script> --}}
         @stack('scripts')
     </body>
 

@@ -30,7 +30,7 @@ class UserPolicy
      */
     public function view(User $user, User $model) // show
     {
-        return Gate::allows("user-admin");
+        return ($user->id == $model->id || Gate::allows("user-admin"));
     }
     
     /**

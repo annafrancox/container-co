@@ -30,6 +30,10 @@ class User extends Authenticatable
         'dateBirth',
         'password',
         'profile_path',
+        'admin',
+        'cpf',
+        'phone',
+        'identity',
     ];
 
     /**
@@ -42,48 +46,47 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function role(){
-        return $this->belongsTo('App\Models\Role', 'role_id');
-    }
-
-
-    public static function saveImg($data, $name, $diretorio, $imgAntiga = '') {
-        if(isset($data[$name]) && is_file($data[$name])){
+    public static function saveImg($data, $name, $diretorio, $imgAntiga = '')
+    {
+        if (isset($data[$name]) && is_file($data[$name])) {
             $imgName = $data[$name]->getClientOriginalName();
             $imgName = hash('sha256', $imgName . strval(time())) . '.' . $data[$name]->getClientOriginalExtension();
             User::deleteImg($imgAntiga, $diretorio);
             $data[$name]->storeAs($diretorio, $imgName);
             $data[$name] = "storage/img/profile/" . $imgName;
-        }else{
+        } else {
             unset($data[$name]);
         }
 
         return $data;
     }
     
-    public static function deleteImg($imgName, $diretorio) {
-        if($imgName != '' && $imgName != static::getDefaultImgPath() && file_exists(storage_path(str_replace('storage', 'app/public', $imgName))) ){
+    public static function deleteImg($imgName, $diretorio)
+    {
+        if ($imgName != '' && $imgName != static::getDefaultImgPath() && file_exists(storage_path(str_replace('storage', 'app/public', $imgName)))) {
             unlink(storage_path(str_replace('storage', 'app/public', $imgName)));
         }
     }
 
-    public static function verifyUpdatePassword($data){
-        if($data['password']){
+    public static function verifyUpdatePassword($data)
+    {
+        if ($data['password']) {
             $data['password'] = \bcrypt($data['password']);
             unset($data['password_confirmation']);
-        }else{
+        } else {
             unset($data['password'], $data['password_confirmation']);
         }
         return $data;
     }
 
-    public function setDefaultImg(){
+    public function setDefaultImg()
+    {
         $this->profile_path = static::getDefaultImgPath();
         $this->save;
     }
 
-    public static function getDefaultImgPath(){
-            return 'storage/img/profile/profile_default.png';
+    public static function getDefaultImgPath()
+    {
+        return 'storage/img/profile/profile_default.png';
     }
-
 }

@@ -15,10 +15,15 @@ class PagesController extends Controller
      */
     public function home()
     {
-        return view('auth.login');
+        if (!Auth::hasUser()) {
+            return view('auth.login');
+        } else {
+            return redirect()->route('dashboard');
+        }
     }
+
     public function dashboard()
     {
-        return redirect()->route('boxes.index');
+        return view('admin.dashboard');
     }
 }

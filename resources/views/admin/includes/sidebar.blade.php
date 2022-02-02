@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="overflow-x: hidden; background-color: #222222;">
     <span>
-        <a href="/" id="link-logo" class="brand-link icone-img link-logo">
+        <a href="{{ route('dashboard') }}" id="link-logo" class="brand-link icone-img link-logo">
             <span class="fa-stack">
                 <img src="{{ asset('img/sidebar-logo-fechada.png') }}" id="img-logo-close" class="brand-image display-none pl-1 pt-1">
                 <img src="{{ asset('img/sidebar-logo.png') }}" id="img-logo" class="img-logo ">
@@ -50,9 +50,9 @@
             @endcan
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('boxes.index') }}" class="nav-link {{  Route::is('boxes.index') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-box-open"></i>
-                        <p>Boxes</p>
+                    <a href="{{ route('categories.index') }}" class="nav-link {{  Route::is('categories.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>Categorias</p>
                     </a>
                 </li>
             </ul>

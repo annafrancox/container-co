@@ -27,16 +27,20 @@ class UserRequest extends FormRequest
             'name' => 'required|string|min:3|max:255',
             'email' => 'required|email|string|unique:users' . ($this->getMethod() != "PUT" ?  '':',email,' . $this->user->id),
             'dateBirth' => 'required',
+            'admin' => 'boolean',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'required_with:password',
             'profile_path' => 'image|mimes:jpeg,png,bmp,svg,webp|max:10000',
             'password' => ($this->getMethod() != "PUT" ? 'required|' : 'nullable|') . 'string|min:8|confirmed',
             'password_confirmation' => 'required_with:password',
-            'role_id' => 'exists:roles,id',
+            'cpf' => 'required|string|unique:users' . ($this->getMethod() != "PUT" ?  '':',cpf,' . $this->user->id),
+            'phone' => 'required|string',
+            'identity' => 'required|string|unique:users' . ($this->getMethod() != "PUT" ?  '':',identity,' . $this->user->id),
         ];
     }
 
-    public function attributes(){
+    public function attributes()
+    {
         return [
             'name' => 'nome',
             'email' => 'e-mail',
@@ -44,6 +48,8 @@ class UserRequest extends FormRequest
             'password' => 'senha',
             'password_confirmation' => 'confirmação de senha',
             'profile_path' => 'imagem',
+            'phone' => 'telefone',
+            'identity' => 'identificação',
         ];
     }
 }
