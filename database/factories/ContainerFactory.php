@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Container;
+use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ContainerFactory extends Factory
@@ -21,8 +22,10 @@ class ContainerFactory extends Factory
      */
     public function definition()
     {
+        $faker = Faker::create('pt_BR');
         return [
-            //
+            'name' => $faker->word,
+            'total_amount' => $faker->numberBetween($min = 100, $max = 200),
         ];
     }
 }

@@ -38,6 +38,12 @@ class ContainerController extends Controller
 
     public function update(ContainerRequest $request, Container $container)
     {
+        if ($request->has('total_amount')) {
+            $productsSum = $container->products->pluck('amount')->sum();
+            if ($productsSum > $request->total_amount) {
+                return redirect()->route('containers.edit', $container)->with('error', 'O container já possui mais de ' . $request->total_amount . ' produtos');
+            }
+        }
         $container->update($request->validated());
         return redirect()->route('containers.index')->with('success', true);
     }

@@ -12,7 +12,7 @@
         </select>
     </div>
     <div class="form-group col-md-6 col-12">
-        <label for="category_id" class="required">Container </label>
+        <label for="category_id" class="required">Categoria </label>
         <select class="form-control select2" name="category_id" id="category_id" required value="{{ old('category_id', $product->category_id) }}">
             @foreach($categories as $category)
                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -29,7 +29,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">R$</span>
             </div>
-            <input type="number" class="form-control" name="price" id="price" aria-describedby="basic-addon1">
+            <input type="number" class="form-control" name="price" id="price" aria-describedby="basic-addon1" value="{{ old('price', $product->price) }}">
         </div>
     </div>
 </div>

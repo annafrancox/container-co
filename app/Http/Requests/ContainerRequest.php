@@ -15,7 +15,7 @@ class ContainerRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'total_amount' => 'required|numeric',
+            'total_amount' => 'required|numeric|min:1|max:2147483647',
         ];
     }
 

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Container;
 use Illuminate\Database\Seeder;
 
 class ContainerSeeder extends Seeder
@@ -13,6 +14,8 @@ class ContainerSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // Container::factory()
+        //     ->count(5)
+        //     ->create();
     }
 }

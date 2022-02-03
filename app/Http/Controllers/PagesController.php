@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Auth;
+use App\Models\Container;
+use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
@@ -24,6 +25,12 @@ class PagesController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $containersNames = Container::all()->pluck('name')->toArray();
+        $productsByContainer = [];
+        foreach (Container::all() as $container) {
+            $productsSum = $container->total_amount != 0 ? round(($container->products->pluck('amount')->sum() / $container->total_amount) * 100) : 0;
+            array_push($productsByContainer, $productsSum);
+        }
+        return view('admin.dashboard', compact('containersNames', 'productsByContainer'));
     }
 }

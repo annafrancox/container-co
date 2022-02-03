@@ -54,7 +54,7 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $data = User::verifyUpdatePassword($data);
-        if (array_key_exists('admin', $data) && !auth()->user->admin) {
+        if (array_key_exists('admin', $data) && !auth()->user()->admin) {
             unset($data['admin']);
         }
         $user = User::create($data);
@@ -95,7 +95,7 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $data = User::verifyUpdatePassword($data);
-        if (array_key_exists('admin', $data) && !auth()->user->admin) {
+        if (array_key_exists('admin', $data) && !auth()->user()->admin) {
             unset($data['admin']);
         }
         $data = User::saveImg($data, 'profile_path', 'public/img/profile/', $user->profile_path);

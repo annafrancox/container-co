@@ -3,14 +3,14 @@
     <span>
         <a href="{{ route('dashboard') }}" id="link-logo" class="brand-link icone-img link-logo">
             <span class="fa-stack">
-                <img src="{{ asset('img/sidebar-logo-fechada.png') }}" id="img-logo-close" class="brand-image display-none pl-1 pt-1">
-                <img src="{{ asset('img/sidebar-logo.png') }}" id="img-logo" class="img-logo ">
+                <img src="{{ asset('img/sidebar-logo-fechada.png') }}" id="img-logo-close" class="brand-image display-none mt-1">
+                <img src="{{ asset('img/sidebar-logo.png') }}" id="img-logo" class="img-logo">
             </span>
         </a>
     </span>
 
     <div class="sidebar">
-        <div class="user-panel mt-3 pb-2 d-flex">
+        <div class="user-panel pb-2 pt-2 d-flex">
             <div class="image">
                 <a href="{{ route('users.show', Auth::user()->id ) }}">
                     <img src="{{ asset( Auth::user()->profile_path ) }}" class="img-circle" alt="User Image">
@@ -29,6 +29,14 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('dashboard') }}" class="nav-link {{ Route::is('dashboard') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+            </ul>
             @can('create', App\Models\User::class)
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item has-treeview">

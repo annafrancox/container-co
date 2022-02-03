@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name') }}</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="icon" href="{{ asset('icon/favicon.png') }}">
+        <title>CONTAINER.CO</title>     
+        <link rel="icon" type="imagem/png" href="{{ asset('img/sidebar-logo-fechada.png') }}" />
         @stack('styles')
     </head>
 

@@ -26,8 +26,8 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'string|required',
-            'amount' => ['required', 'numeric', new ContainerAmount($this->amount, $this->container_id)],
-            'price' => 'required|numeric',
+            'amount' => ['required', 'min:1', 'max:2147483647', 'numeric', new ContainerAmount($this->amount, $this->container_id)],
+            'price' => 'required|numeric|min:0|max:2147483647',
             'container_id' => 'required|exists:containers,id',
             'category_id' => 'required|exists:categories,id',
         ];
