@@ -46,7 +46,7 @@ Além disto é interessante uma IDE que suporte a linguagem, como [VSCode](https
 
 ### Utilização:
 #### Preparação de ambiente:
-- Após clonar o repositório ou descompactar o .zip enviado, um banco de dados deverá ser criado e adiconado ao arquivo .env. Após isso o usuário deverá utilizar os comandos abaixo:
+- Após clonar o repositório ou descompactar o .zip, um banco de dados deverá ser criado e adicionado ao arquivo .env, este sendo uma cópia do arquivo .env.example onde já existem as linhas indicadas para as credecnciais do banco de dados criado. Após isso o usuário deverá utilizar os comandos abaixo:
 ```
 composer install
 ```
@@ -58,6 +58,9 @@ php artisan migrate:fresh --seed
 ```
 ```
 php artisan storage:link
+```
+```
+php artisan key:generate
 ```
 Para compilar e executar o programa, siga as instruções abaixo.
 
